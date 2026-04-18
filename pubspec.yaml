@@ -1,0 +1,25 @@
+name: kidzspark
+description: "Kids learning app with quiz and interactive features"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Open YouTube links
+  url_launcher: ^6.2.5
+
+  # Voice / Text-to-Speech
+  flutter_tts: ^3.8.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
