@@ -489,7 +489,7 @@ class _QuizPageState extends State<QuizPage> {
         {
           "q": "What comes after A?",
           "a": "B",
-          "o": ["B", "C", "D", "E"],
+          "o": ["B", "Y", "Z", "E"],
         },
         {
           "q": "What comes after C?",
@@ -509,91 +509,236 @@ class _QuizPageState extends State<QuizPage> {
         {
           "q": "What comes after M?",
           "a": "N",
-          "o": ["L", "N", "O", "P"],
+          "o": ["L", "P", "O", "N"],
         },
 
         {
-          "q": "What comes before B?",
-          "a": "A",
-          "o": ["A", "C", "D", "E"],
-        },
-        {
-          "q": "What comes before D?",
+          "q": "What comes between B and D?",
           "a": "C",
-          "o": ["A", "B", "C", "E"],
+          "o": ["E", "C", "A", "F"],
         },
         {
-          "q": "What comes before G?",
+          "q": "What comes between E and G?",
           "a": "F",
-          "o": ["E", "F", "G", "H"],
-        },
-
-        {
-          "q": "Which comes between A and C?",
-          "a": "B",
-          "o": ["B", "D", "E", "F"],
+          "o": ["D", "H", "F", "I"],
         },
         {
-          "q": "Which comes between D and F?",
-          "a": "E",
-          "o": ["E", "G", "H", "I"],
-        },
-
-        {
-          "q": "Arrange: A, B, ?, D",
-          "a": "C",
-          "o": ["C", "E", "F", "G"],
+          "q": "What comes before X?",
+          "a": "W",
+          "o": ["Y", "V", "W", "U"],
         },
         {
-          "q": "Arrange: E, F, ?, H",
-          "a": "G",
-          "o": ["G", "I", "J", "K"],
-        },
-
-        {
-          "q": "Which letter is first?",
-          "a": "A",
-          "o": ["A", "B", "C", "D"],
+          "q": "What comes 2 letters after K?",
+          "a": "M",
+          "o": ["N", "M", "L", "O"],
         },
         {
-          "q": "Which letter is last?",
-          "a": "Z",
-          "o": ["Z", "Y", "X", "W"],
-        },
-
-        {
-          "q": "Which comes after K?",
-          "a": "L",
-          "o": ["L", "M", "N", "O"],
-        },
-        {
-          "q": "Which comes after T?",
-          "a": "U",
-          "o": ["U", "V", "W", "X"],
-        },
-
-        {
-          "q": "Which comes before M?",
-          "a": "L",
-          "o": ["L", "N", "O", "P"],
-        },
-        {
-          "q": "Which comes before S?",
+          "q": "What comes 2 letters before T?",
           "a": "R",
-          "o": ["R", "T", "U", "V"],
-        },
-
-        {
-          "q": "Skip letter: A, B, ?, D",
-          "a": "C",
-          "o": ["C", "E", "F", "G"],
+          "o": ["Q", "S", "R", "P"],
         },
         {
-          "q": "Skip letter: G, H, ?, J",
+          "q": "Middle letter of 'DOG'?",
+          "a": "O",
+          "o": ["D", "G", "O", "N"],
+        },
+        {
+          "q": "Middle letter of 'FISH'?",
           "a": "I",
-          "o": ["I", "K", "L", "M"],
+          "o": ["F", "S", "H", "I"],
+        },
+        {
+          "q": "Last letter of 'APPLE'?",
+          "a": "E",
+          "o": ["A", "P", "L", "E"],
+        },
+        {
+          "q": "First letter of 'UMBRELLA'?",
+          "a": "U",
+          "o": ["M", "B", "U", "A"],
+        },
+        {
+          "q": "How many vowels in 'EDUCATION'?",
+          "a": "5",
+          "o": ["3", "6", "5", "4"],
+        },
+        {
+          "q": "Which is NOT a vowel?",
+          "a": "B",
+          "o": ["A", "E", "B", "I"],
+        },
+        {
+          "q": "Which comes first: 'C' or 'E'?",
+          "a": "C",
+          "o": ["E", "C", "Both", "None"],
+        },
+        {
+          "q": "Which comes last: 'M', 'N', 'O'?",
+          "a": "O",
+          "o": ["M", "P", "O", "N"],
+        },
+        {
+          "q": "Spell 'BOY' - Second letter?",
+          "a": "O",
+          "o": ["B", "Y", "O", "A"],
+        },
+        {
+          "q": "Spell 'GIRL' - Third letter?",
+          "a": "R",
+          "o": ["G", "I", "L", "R"],
+        },
+        {
+          "q": "Missing: A, C, _, E",
+          "a": "D",
+          "o": ["B", "F", "D", "G"],
+        },
+        {
+          "q": "Missing: P, _, R, S",
+          "a": "Q",
+          "o": ["O", "T", "Q", "U"],
+        },
+        {
+          "q": "Missing: U, V, _, X",
+          "a": "W",
+          "o": ["T", "Y", "W", "Z"],
+        },
+        {
+          "q": "Which set is in order?",
+          "a": "L, M, N",
+          "o": ["L, N, M", "M, L, N", "L, M, N", "N, M, L"],
+        },
+        {
+          "q": "Which set is NOT in order?",
+          "a": "R, T, S",
+          "o": ["P, Q, R", "R, T, S", "X, Y, Z", "A, B, C"],
+        },
+        {
+          "q": "How many letters from A to E?",
+          "a": "5",
+          "o": ["3", "4", "6", "5"],
+        },
+        {
+          "q": "How many letters from P to T?",
+          "a": "5",
+          "o": ["4", "6", "5", "7"],
+        },
+        {
+          "q": "What is the 3rd letter?",
+          "a": "C",
+          "o": ["A", "B", "D", "C"],
+        },
+        {
+          "q": "What is the 7th letter?",
+          "a": "G",
+          "o": ["E", "F", "H", "G"],
+        },
+        {
+          "q": "What is the 10th letter?",
+          "a": "J",
+          "o": ["H", "I", "K", "J"],
+        },
+        {
+          "q": "Letter before 'J' and after 'H'?",
+          "a": "I",
+          "o": ["G", "K", "I", "L"],
+        },
+        {
+          "q": "Letter after 'Q' and before 'S'?",
+          "a": "R",
+          "o": ["P", "T", "R", "U"],
+        },
+        {
+          "q": "Which letter looks like '3'?",
+          "a": "E",
+          "o": ["B", "C", "E", "S"],
+        },
+        {
+          "q": "Which letter looks like '0'?",
+          "a": "O",
+          "o": ["Q", "C", "O", "D"],
+        },
+        {
+          "q": "B + D = ?",
+          "a": "BD",
+          "o": ["AB", "CD", "BD", "BC"],
+        },
+        {
+          "q": "C + A + T = ?",
+          "a": "CAT",
+          "o": ["ACT", "TAC", "CAT", "CTA"],
+        },
+        {
+          "q": "D + O + G = ?",
+          "a": "DOG",
+          "o": ["GOD", "ODG", "DOG", "GDO"],
+        },
+        {
+          "q": "Which word starts with 'S'?",
+          "a": "Sun",
+          "o": ["Moon", "Star", "Sun", "Sky"],
+        },
+        {
+          "q": "Which word starts with 'M'?",
+          "a": "Moon",
+          "o": ["Sun", "Star", "Moon", "Sky"],
+        },
+        {
+          "q": "Which word ends with 'T'?",
+          "a": "BAT",
+          "o": ["BAD", "BAG", "BAN", "BAT"],
+        },
+        {
+          "q": "Which word ends with 'G'?",
+          "a": "BAG",
+          "o": ["BAD", "BAT", "BAN", "BAG"],
+        },
+        {
+          "q": "Reverse of 'ON' is?",
+          "a": "NO",
+          "o": ["OM", "NO", "ON", "MO"],
+        },
+        {
+          "q": "Reverse of 'TO' is?",
+          "a": "OT",
+          "o": ["TA", "OT", "TO", "AT"],
+        },
+        {
+          "q": "A, E, I, O, _?",
+          "a": "U",
+          "o": ["Y", "V", "U", "W"],
+        },
+        {
+          "q": "B, D, F, H, _?",
+          "a": "J",
+          "o": ["I", "K", "J", "L"],
+        },
+        {
+          "q": "Z, X, V, T, _?",
+          "a": "R",
+          "o": ["S", "Q", "R", "P"],
+        },
+        {
+          "q": "Which group has only vowels?",
+          "a": "A, E, I",
+          "o": ["A, B, C", "X, Y, Z", "A, E, I", "P, Q, R"],
+        },
+        {
+          "q": "Which group has NO vowels?",
+          "a": "B, C, D",
+          "o": ["A, B, C", "E, F, G", "O, P, Q", "B, C, D"],
+        },
+        {
+          "q": "How many letters before 'E'?",
+          "a": "4",
+          "o": ["3", "5", "4", "6"],
+        },
+        {
+          "q": "How many letters after 'W'?",
+          "a": "3",
+          "o": ["2", "4", "3", "5"],
         },
       ],
+
       "Colors": [
         {
           "q": "Sky color?",
@@ -823,6 +968,257 @@ class _QuizPageState extends State<QuizPage> {
           "a": "Fruit",
           "o": ["Fruit", "Animal", "Color", "Place"],
         },
+
+        {
+          "q": "What is the meaning of 'Big'?",
+          "a": "Large",
+          "o": ["Small", "Large", "Tiny", "Short"],
+        },
+        {
+          "q": "What is the meaning of 'Happy'?",
+          "a": "Glad",
+          "o": ["Sad", "Angry", "Glad", "Cry"],
+        },
+        {
+          "q": "What is the meaning of 'Fast'?",
+          "a": "Quick",
+          "o": ["Slow", "Stop", "Quick", "Wait"],
+        },
+        {
+          "q": "What is the meaning of 'Hot'?",
+          "a": "Warm",
+          "o": ["Cold", "Wet", "Warm", "Dry"],
+        },
+        {
+          "q": "What is the meaning of 'Jump'?",
+          "a": "Leap",
+          "o": ["Sit", "Sleep", "Leap", "Walk"],
+        },
+        {
+          "q": "What is the meaning of 'Small'?",
+          "a": "Little",
+          "o": ["Big", "Little", "Huge", "Tall"],
+        },
+        {
+          "q": "What is the meaning of 'Sad'?",
+          "a": "Unhappy",
+          "o": ["Glad", "Unhappy", "Angry", "Laugh"],
+        },
+        {
+          "q": "What is the meaning of 'Slow'?",
+          "a": "Not fast",
+          "o": ["Quick", "Not fast", "Run", "Fly"],
+        },
+        {
+          "q": "What is the meaning of 'Cold'?",
+          "a": "Chilly",
+          "o": ["Hot", "Chilly", "Warm", "Fire"],
+        },
+        {
+          "q": "What is the meaning of 'Sleep'?",
+          "a": "Rest",
+          "o": ["Run", "Rest", "Dance", "Eat"],
+        },
+        {
+          "q": "What is the meaning of 'Eat'?",
+          "a": "Take food",
+          "o": ["Drink", "Take food", "Walk", "Jump"],
+        },
+        {
+          "q": "What is the meaning of 'Drink'?",
+          "a": "Take water",
+          "o": ["Eat", "Take water", "Sleep", "Play"],
+        },
+        {
+          "q": "What is the meaning of 'Run'?",
+          "a": "Move fast",
+          "o": ["Sit", "Move fast", "Stop", "Crawl"],
+        },
+        {
+          "q": "What is the meaning of 'Walk'?",
+          "a": "Move slowly",
+          "o": ["Run", "Move slowly", "Fly", "Jump"],
+        },
+        {
+          "q": "What is the meaning of 'Book'?",
+          "a": "For reading",
+          "o": ["For eating", "For reading", "For playing", "For sleeping"],
+        },
+        {
+          "q": "What is the meaning of 'Sun'?",
+          "a": "Star",
+          "o": ["Moon", "Star", "Cloud", "Rain"],
+        },
+        {
+          "q": "What is the meaning of 'Moon'?",
+          "a": "Night light",
+          "o": ["Day light", "Night light", "Star", "Sun"],
+        },
+        {
+          "q": "What is the meaning of 'Mother'?",
+          "a": "Mom",
+          "o": ["Dad", "Mom", "Sister", "Brother"],
+        },
+        {
+          "q": "What is the meaning of 'Father'?",
+          "a": "Dad",
+          "o": ["Mom", "Dad", "Uncle", "Grandpa"],
+        },
+        {
+          "q": "What is the meaning of 'Friend'?",
+          "a": "Buddy",
+          "o": ["Enemy", "Buddy", "Teacher", "Stranger"],
+        },
+        {
+          "q": "What is the meaning of 'Brave'?",
+          "a": "Fearless",
+          "o": ["Scared", "Fearless", "Weak", "Slow"],
+        },
+        {
+          "q": "What is the meaning of 'Tiny'?",
+          "a": "Very small",
+          "o": ["Very big", "Very small", "Round", "Heavy"],
+        },
+        {
+          "q": "What is the meaning of 'Huge'?",
+          "a": "Very big",
+          "o": ["Very big", "Very small", "Light", "Empty"],
+        },
+        {
+          "q": "What is the meaning of 'Shout'?",
+          "a": "Speak loudly",
+          "o": ["Speak softly", "Speak loudly", "Cry", "Whisper"],
+        },
+        {
+          "q": "What is the meaning of 'Gift'?",
+          "a": "Present",
+          "o": ["Take", "Present", "Hide", "Break"],
+        },
+        {
+          "q": "What is the meaning of 'Clean'?",
+          "a": "Not dirty",
+          "o": ["Dirty", "Not dirty", "Wet", "Broken"],
+        },
+        {
+          "q": "What is the meaning of 'Dirty'?",
+          "a": "Not clean",
+          "o": ["Clean", "Not clean", "Shiny", "New"],
+        },
+        {
+          "q": "What is the meaning of 'Old'?",
+          "a": "Not new",
+          "o": ["New", "Not new", "Young", "Fresh"],
+        },
+        {
+          "q": "What is the meaning of 'New'?",
+          "a": "Not old",
+          "o": ["Old", "Not old", "Broken", "Used"],
+        },
+        {
+          "q": "What is the meaning of 'Start'?",
+          "a": "Begin",
+          "o": ["End", "Begin", "Stop", "Finish"],
+        },
+        {
+          "q": "What is the meaning of 'End'?",
+          "a": "Finish",
+          "o": ["Start", "Finish", "Begin", "Continue"],
+        },
+        {
+          "q": "What is the meaning of 'Up'?",
+          "a": "Above",
+          "o": ["Down", "Above", "Below", "Under"],
+        },
+        {
+          "q": "What is the meaning of 'Down'?",
+          "a": "Below",
+          "o": ["Up", "Below", "Above", "Over"],
+        },
+        {
+          "q": "What is the meaning of 'Day'?",
+          "a": "Sun time",
+          "o": ["Night time", "Sun time", "Dark", "Sleep"],
+        },
+        {
+          "q": "What is the meaning of 'Night'?",
+          "a": "Dark time",
+          "o": ["Day time", "Dark time", "Sun", "Bright"],
+        },
+        {
+          "q": "What is the meaning of 'Love'?",
+          "a": "Like a lot",
+          "o": ["Hate", "Like a lot", "Anger", "Fight"],
+        },
+        {
+          "q": "What is the meaning of 'Hate'?",
+          "a": "Dislike",
+          "o": ["Love", "Dislike", "Like", "Enjoy"],
+        },
+        {
+          "q": "What is the meaning of 'Give'?",
+          "a": "Offer",
+          "o": ["Take", "Offer", "Hide", "Keep"],
+        },
+        {
+          "q": "What is the meaning of 'Take'?",
+          "a": "Get",
+          "o": ["Give", "Get", "Throw", "Leave"],
+        },
+        {
+          "q": "What is the meaning of 'Open'?",
+          "a": "Not closed",
+          "o": ["Closed", "Not closed", "Locked", "Broken"],
+        },
+        {
+          "q": "What is the meaning of 'Close'?",
+          "a": "Shut",
+          "o": ["Open", "Shut", "Break", "Throw"],
+        },
+        {
+          "q": "What is the meaning of 'Wet'?",
+          "a": "With water",
+          "o": ["Dry", "With water", "Hot", "Cold"],
+        },
+        {
+          "q": "What is the meaning of 'Dry'?",
+          "a": "No water",
+          "o": ["Wet", "No water", "Cold", "Rain"],
+        },
+        {
+          "q": "What is the meaning of 'Hard'?",
+          "a": "Not soft",
+          "o": ["Soft", "Not soft", "Smooth", "Light"],
+        },
+        {
+          "q": "What is the meaning of 'Soft'?",
+          "a": "Not hard",
+          "o": ["Hard", "Not hard", "Rough", "Heavy"],
+        },
+        {
+          "q": "What is the meaning of 'Empty'?",
+          "a": "Nothing inside",
+          "o": ["Full", "Nothing inside", "Heavy", "Big"],
+        },
+        {
+          "q": "What is the meaning of 'Full'?",
+          "a": "No space",
+          "o": ["Empty", "No space", "Light", "Small"],
+        },
+        {
+          "q": "What is the meaning of 'Near'?",
+          "a": "Close",
+          "o": ["Far", "Close", "Away", "Distant"],
+        },
+        {
+          "q": "What is the meaning of 'Far'?",
+          "a": "Not near",
+          "o": ["Near", "Not near", "Close", "Here"],
+        },
+        {
+          "q": "What is the meaning of 'Quiet'?",
+          "a": "No noise",
+          "o": ["Loud", "No noise", "Shout", "Music"],
+        },
       ],
     },
 
@@ -882,34 +1278,34 @@ class _QuizPageState extends State<QuizPage> {
         {
           "q": "Odd one out: Dog, Cat, Lion, Chair",
           "a": "Chair",
-          "o": ["Chair", "Dog", "Cat", "Lion"],
+          "o": ["Lion", "Dog", "Cat", "Chair"],
         },
         {
           "q": "Odd one out: Red, Blue, Green, Ball",
           "a": "Ball",
-          "o": ["Ball", "Red", "Blue", "Green"],
+          "o": ["Red", "Ball", "Blue", "Green"],
         },
         {
           "q": "Odd one out: Pen, Book, Table, Pencil",
           "a": "Table",
-          "o": ["Table", "Pen", "Book", "Pencil"],
+          "o": ["Book", "Pen", "Table", "Pencil"],
         },
 
         // ⚡ Comparison (Fast/Big/Small)
         {
           "q": "Which is faster?",
           "a": "Car",
-          "o": ["Car", "Turtle", "Snail", "Stone"],
+          "o": ["Snail", "Turtle", "Car", "Stone"],
         },
         {
           "q": "Which is biggest?",
           "a": "Elephant",
-          "o": ["Elephant", "Cat", "Dog", "Rat"],
+          "o": ["Cat", "Cat", "Elephant", "Rat"],
         },
         {
           "q": "Which is smallest?",
           "a": "Ant",
-          "o": ["Ant", "Dog", "Horse", "Cow"],
+          "o": ["Cow", "Dog", "Horse", "Ant"],
         },
         {
           "q": "Which is heavy?",
@@ -949,6 +1345,256 @@ class _QuizPageState extends State<QuizPage> {
           "q": "Pattern: 2, 4, 8, ?",
           "a": "16",
           "o": ["16", "10", "12", "14"],
+        },
+        {
+          "q": "Choose correct: I ___ a boy.",
+          "a": "am",
+          "o": ["is", "am", "are", "be"],
+        },
+        {
+          "q": "Choose correct: She ___ happy.",
+          "a": "is",
+          "o": ["am", "is", "are", "was"],
+        },
+        {
+          "q": "Choose correct: They ___ playing.",
+          "a": "are",
+          "o": ["is", "am", "are", "was"],
+        },
+        {
+          "q": "Choose correct: He ___ my brother.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: We ___ friends.",
+          "a": "are",
+          "o": ["is", "am", "are", "was"],
+        },
+        {
+          "q": "Choose correct: You ___ good.",
+          "a": "are",
+          "o": ["is", "am", "are", "be"],
+        },
+        {
+          "q": "Choose correct: It ___ a cat.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: This is ___ apple.",
+          "a": "an",
+          "o": ["a", "an", "the", "no"],
+        },
+        {
+          "q": "Choose correct: I have ___ dog.",
+          "a": "a",
+          "o": ["an", "a", "the", "my"],
+        },
+        {
+          "q": "Choose correct: She eats ___ orange.",
+          "a": "an",
+          "o": ["a", "an", "the", "one"],
+        },
+        {
+          "q": "Choose correct: He is ___ teacher.",
+          "a": "a",
+          "o": ["an", "a", "the", "good"],
+        },
+        {
+          "q": "Choose correct: ___ is my book.",
+          "a": "This",
+          "o": ["This", "These", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: ___ are my toys.",
+          "a": "These",
+          "o": ["This", "These", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: ___ is a bird.",
+          "a": "That",
+          "o": ["This", "These", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: ___ are stars.",
+          "a": "Those",
+          "o": ["This", "These", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: I ___ to school.",
+          "a": "go",
+          "o": ["goes", "go", "going", "went"],
+        },
+        {
+          "q": "Choose correct: She ___ to school.",
+          "a": "goes",
+          "o": ["go", "goes", "going", "gone"],
+        },
+        {
+          "q": "Choose correct: They ___ football.",
+          "a": "play",
+          "o": ["plays", "play", "playing", "played"],
+        },
+        {
+          "q": "Choose correct: He ___ football.",
+          "a": "plays",
+          "o": ["play", "plays", "playing", "played"],
+        },
+        {
+          "q": "Choose correct: The cat ___ milk.",
+          "a": "drinks",
+          "o": ["drink", "drinks", "drinking", "drank"],
+        },
+        {
+          "q": "Choose correct: Cats ___ milk.",
+          "a": "drink",
+          "o": ["drinks", "drink", "drinking", "drank"],
+        },
+        {
+          "q": "Choose correct: I ___ a book.",
+          "a": "have",
+          "o": ["has", "have", "having", "had"],
+        },
+        {
+          "q": "Choose correct: She ___ a doll.",
+          "a": "has",
+          "o": ["have", "has", "having", "had"],
+        },
+        {
+          "q": "Choose correct: We ___ happy.",
+          "a": "are",
+          "o": ["is", "am", "are", "was"],
+        },
+        {
+          "q": "Choose correct: The sky ___ blue.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: I like ___.",
+          "a": "to read",
+          "o": ["to eat", "to read", "to sleep", "to run"],
+        },
+        {
+          "q": "Choose correct: My name ___ Ram.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: ___ name is Sita.",
+          "a": "Her",
+          "o": ["His", "Her", "My", "Your"],
+        },
+        {
+          "q": "Choose correct: ___ name is Tom.",
+          "a": "His",
+          "o": ["Her", "His", "My", "Our"],
+        },
+        {
+          "q": "Choose correct: This is ___ pen.",
+          "a": "my",
+          "o": ["me", "my", "I", "mine"],
+        },
+        {
+          "q": "Choose correct: I see ___.",
+          "a": "a bird",
+          "o": ["an bird", "a bird", "bird", "the birds"],
+        },
+        {
+          "q": "Choose correct: She is ___ girl.",
+          "a": "a good",
+          "o": ["an good", "a good", "good", "the good"],
+        },
+        {
+          "q": "Choose correct: We ___ in Class 1.",
+          "a": "are",
+          "o": ["is", "am", "are", "be"],
+        },
+        {
+          "q": "Choose correct: The dog ___ big.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: Dogs ___ big.",
+          "a": "are",
+          "o": ["is", "am", "are", "was"],
+        },
+        {
+          "q": "Choose correct: I ___ two eyes.",
+          "a": "have",
+          "o": ["has", "have", "having", "had"],
+        },
+        {
+          "q": "Choose correct: He ___ one nose.",
+          "a": "has",
+          "o": ["have", "has", "having", "had"],
+        },
+        {
+          "q": "Choose correct: ___ is a banana.",
+          "a": "This",
+          "o": ["These", "This", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: ___ are bananas.",
+          "a": "These",
+          "o": ["This", "These", "That", "Those"],
+        },
+        {
+          "q": "Choose correct: I can ___ fast.",
+          "a": "run",
+          "o": ["runs", "run", "running", "ran"],
+        },
+        {
+          "q": "Choose correct: She can ___ well.",
+          "a": "sing",
+          "o": ["sings", "sing", "singing", "sang"],
+        },
+        {
+          "q": "Choose correct: The sun ___ hot.",
+          "a": "is",
+          "o": ["am", "is", "are", "be"],
+        },
+        {
+          "q": "Choose correct: Stars ___ bright.",
+          "a": "are",
+          "o": ["is", "am", "are", "was"],
+        },
+        {
+          "q": "Choose correct: I ___ water.",
+          "a": "drink",
+          "o": ["drinks", "drink", "drinking", "drank"],
+        },
+        {
+          "q": "Choose correct: Mom ___ food.",
+          "a": "cooks",
+          "o": ["cook", "cooks", "cooking", "cooked"],
+        },
+        {
+          "q": "Choose correct: Dad ___ a car.",
+          "a": "has",
+          "o": ["have", "has", "having", "had"],
+        },
+        {
+          "q": "Choose correct: We ___ to park.",
+          "a": "go",
+          "o": ["goes", "go", "going", "went"],
+        },
+        {
+          "q": "Choose correct: The bird ___ fly.",
+          "a": "can",
+          "o": ["cans", "can", "canning", "could"],
+        },
+        {
+          "q": "Choose correct: Fish ___ swim.",
+          "a": "can",
+          "o": ["cans", "can", "canning", "could"],
+        },
+        {
+          "q": "Choose correct: I ___ 6 years old.",
+          "a": "am",
+          "o": ["is", "am", "are", "be"],
         },
       ],
     },
@@ -1008,55 +1654,154 @@ class _QuizPageState extends State<QuizPage> {
 
         // 🔁 NUMBER SEQUENCE
         {
-          "q": "What comes next? 2, 4, 6, ?",
+          "q": "What comes next? 2, 4, 6, ? 🤔 (Even numbers party!)",
           "a": "8",
-          "o": ["7", "8", "9", "10"],
+          "o": ["5", "8", "11", "12"],
         },
         {
-          "q": "What comes next? 1, 3, 5, ?",
+          "q": "What comes next? 1, 3, 5, ? 😄 (Odd numbers dancing!)",
           "a": "7",
-          "o": ["6", "7", "8", "9"],
+          "o": ["4", "6", "7", "10"],
         },
         {
-          "q": "What comes next? 10, 20, 30, ?",
+          "q":
+              "What comes next? 10, 20, 30, ? 🚀 (Counting by 10 like a rocket!)",
           "a": "40",
-          "o": ["35", "40", "45", "50"],
+          "o": ["20", "35", "40", "60"],
+        },
+        {
+          "q": "What comes next? 5, 10, 15, ? 🍕 (Pizza slices increasing!)",
+          "a": "20",
+          "o": ["10", "18", "20", "30"],
+        },
+        {
+          "q": "What comes next? 1, 4, 7, ? 🐒 (Monkey jumping 3 steps!)",
+          "a": "10",
+          "o": ["7", "9", "10", "13"],
+        },
+        {
+          "q": "What comes next? 9, 8, 7, ? 🐢 (Turtle going down slowly!)",
+          "a": "6",
+          "o": ["3", "6", "7", "9"],
+        },
+        {
+          "q": "What comes next? 3, 6, 9, ? 🎈 (Balloons flying in 3s!)",
+          "a": "12",
+          "o": ["6", "10", "12", "15"],
+        },
+        {
+          "q": "What comes next? 2, 5, 8, ? 🐸 (Frog jumps 3 steps!)",
+          "a": "11",
+          "o": ["8", "10", "11", "14"],
+        },
+        {
+          "q": "What comes next? 7, 14, 21, ? 🦁 (Lion counting loudly!)",
+          "a": "28",
+          "o": ["21", "24", "28", "35"],
+        },
+        {
+          "q": "What comes next? 100, 90, 80, ? 🧊 (Ice melting down!)",
+          "a": "70",
+          "o": ["50", "60", "70", "90"],
         },
 
         // ❌ REASONING
         {
-          "q": "Which is bigger?",
+          "q": "Which is bigger? 🤔",
           "a": "15",
           "o": ["10", "12", "15", "9"],
         },
         {
-          "q": "Which is smallest?",
+          "q": "Which is smallest? 🧐",
           "a": "3",
           "o": ["3", "5", "7", "9"],
+        },
+        {
+          "q": "Which is bigger? 🐘",
+          "a": "20",
+          "o": ["18", "20", "17", "19"],
+        },
+        {
+          "q": "Which is smallest? 🐭",
+          "a": "2",
+          "o": ["4", "2", "6", "3"],
+        },
+        {
+          "q": "Which is bigger? 🚀",
+          "a": "50",
+          "o": ["45", "50", "48", "49"],
+        },
+        {
+          "q": "Which is smallest? 🍬",
+          "a": "1",
+          "o": ["2", "3", "1", "4"],
         },
 
         // 🧠 LOGIC MIX
         {
-          "q": "If you have 2 hands, how many fingers total?",
-          "a": "10",
-          "o": ["8", "10", "12", "14"],
+          "q": "Why did 6 cry? 😢",
+          "a": "Because 7 ate 9!",
+          "o": [
+            "Because 5 was late",
+            "Because 7 ate 9!",
+            "Because 10 shouted",
+            "Because 8 slept",
+          ],
         },
         {
-          "q": "What is 6 + 6?",
-          "a": "12",
-          "o": ["10", "11", "12", "13"],
+          "q": "What is 2 + 2? 🤓 (Easy peasy lemon squeezy!)",
+          "a": "4",
+          "o": ["3", "4", "5", "22"],
         },
-
-        // 🔥 HARD LEVEL
         {
-          "q": "20 - 9 = ?",
+          "q": "If you eat 3 candies and get 2 more 🍬, how many now?",
+          "a": "5",
+          "o": ["4", "5", "6", "7"],
+        },
+        {
+          "q": "Why was the equal sign (=) so happy? 😄",
+          "a": "Because both sides were equal!",
+          "o": [
+            "Because it was funny",
+            "Because both sides were equal!",
+            "Because it was long",
+            "Because it danced",
+          ],
+        },
+        {
+          "q": "What comes after 10? 🤔 (No cheating!)",
           "a": "11",
-          "o": ["10", "11", "12", "13"],
+          "o": ["9", "10", "11", "12"],
         },
         {
-          "q": "5 + 5 + 5 = ?",
-          "a": "15",
-          "o": ["10", "15", "20", "25"],
+          "q": "If you have 1 pizza 🍕 and eat it all, how many left?",
+          "a": "0",
+          "o": ["1", "0", "2", "10"],
+        },
+        {
+          "q": "Why was 9 scared of 7? 😱",
+          "a": "Because 7 ate 9!",
+          "o": [
+            "Because 6 shouted",
+            "Because 7 ate 9!",
+            "Because 8 ran away",
+            "Because 10 laughed",
+          ],
+        },
+        {
+          "q": "What is 5 + 0? 😎 (Zero is lazy!)",
+          "a": "5",
+          "o": ["0", "5", "10", "50"],
+        },
+        {
+          "q": "If you have 10 balloons 🎈 and 2 fly away, how many left?",
+          "a": "8",
+          "o": ["6", "7", "8", "9"],
+        },
+        {
+          "q": "What is 1 + 1? 🤭 (Not 11 this time!)",
+          "a": "2",
+          "o": ["2", "11", "3", "1"],
         },
       ],
     },
@@ -1064,75 +1809,86 @@ class _QuizPageState extends State<QuizPage> {
     "Class 4": {
       "Math": [
         {
-          "q": "125 + 75 = ?",
-          "a": "200",
-          "o": ["180", "190", "200", "210"],
+          "q": "If 12 kids share 36 candies 🍬 equally, how many each?",
+          "a": "3",
+          "o": ["2", "3", "4", "5"],
         },
         {
-          "q": "240 - 95 = ?",
-          "a": "145",
-          "o": ["135", "145", "155", "165"],
+          "q": "What is 25 × 4? 🧠 (Think fast!)",
+          "a": "100",
+          "o": ["80", "90", "100", "120"],
         },
         {
-          "q": "15 × 4 = ?",
-          "a": "60",
-          "o": ["50", "55", "60", "65"],
+          "q": "If a book costs ₹50 and you buy 3 📚, total?",
+          "a": "150",
+          "o": ["100", "120", "150", "180"],
         },
         {
-          "q": "100 ÷ 4 = ?",
-          "a": "25",
-          "o": ["20", "25", "30", "35"],
+          "q": "What is 144 ÷ 12? 🤔",
+          "a": "12",
+          "o": ["10", "11", "12", "14"],
         },
         {
-          "q": "What is half of 90?",
-          "a": "45",
-          "o": ["40", "45", "50", "55"],
+          "q": "If 1 dozen = 12 eggs 🥚, how many in 2 dozen?",
+          "a": "24",
+          "o": ["12", "18", "24", "30"],
         },
       ],
 
       "Logic": [
         {
-          "q": "What comes next? 3, 6, 9, ?",
-          "a": "12",
-          "o": ["10", "11", "12", "13"],
+          "q": "What comes next? 2, 6, 18, ? 🚀",
+          "a": "54",
+          "o": ["24", "36", "54", "72"],
         },
         {
-          "q": "Odd one out: Apple, Mango, Car, Banana",
-          "a": "Car",
-          "o": ["Car", "Apple", "Mango", "Banana"],
+          "q": "What comes next? 100, 90, 80, ? ⬇️",
+          "a": "70",
+          "o": ["60", "65", "70", "75"],
         },
         {
-          "q": "Which is heavier?",
-          "a": "Rock",
-          "o": ["Feather", "Leaf", "Rock", "Paper"],
+          "q": "Odd one out: Cow, Goat, Tiger, Lion 🐄",
+          "a": "Goat",
+          "o": ["Cow", "Goat", "Tiger", "Lion"],
         },
         {
-          "q": "What is missing? Sun, Moon, Stars, ?",
-          "a": "Sky",
-          "o": ["Sky", "Tree", "Car", "Book"],
+          "q": "If yesterday was Monday, what is today? 📅",
+          "a": "Tuesday",
+          "o": ["Sunday", "Monday", "Tuesday", "Wednesday"],
         },
         {
-          "q": "Which is fastest?",
-          "a": "Aeroplane",
-          "o": ["Bike", "Train", "Car", "Aeroplane"],
+          "q": "Which number is divisible by 5? 🔢",
+          "a": "45",
+          "o": ["42", "43", "44", "45"],
         },
       ],
 
-      "Meaning": [
+      "Fun Thinking": [
         {
-          "q": "Honest means?",
-          "a": "Truthful",
-          "o": ["Truthful", "Lazy", "Fast", "Weak"],
+          "q":
+              "I am a number. When you add 10 to me, I become 20. Who am I? 🤓",
+          "a": "10",
+          "o": ["5", "10", "15", "20"],
         },
         {
-          "q": "Brave means?",
-          "a": "Fearless",
-          "o": ["Fearless", "Weak", "Slow", "Angry"],
+          "q": "I am less than 50 but more than 40, and even. Who am I? 😄",
+          "a": "42",
+          "o": ["41", "42", "43", "45"],
         },
         {
-          "q": "Kind means?",
-          "a": "Helpful",
-          "o": ["Helpful", "Rude", "Angry", "Lazy"],
+          "q": "What has 4 legs but cannot walk? 🪑",
+          "a": "Table",
+          "o": ["Dog", "Chair", "Table", "Horse"],
+        },
+        {
+          "q": "If you multiply me by 0, what do you get? 😜",
+          "a": "0",
+          "o": ["0", "1", "Same number", "10"],
+        },
+        {
+          "q": "What comes next? 1, 4, 9, 16, ? 🧩",
+          "a": "25",
+          "o": ["20", "24", "25", "30"],
         },
       ],
     },
@@ -1141,75 +1897,118 @@ class _QuizPageState extends State<QuizPage> {
     "Class 5": {
       "Math": [
         {
-          "q": "345 + 278 = ?",
+          "q": "345 + 278 = ? 🧮 (Big numbers party 🎉)",
           "a": "623",
           "o": ["613", "623", "633", "643"],
         },
         {
-          "q": "900 - 456 = ?",
+          "q": "900 - 456 = ? 🤯 (Money spent on snacks 🍔)",
           "a": "444",
           "o": ["434", "444", "454", "464"],
         },
         {
-          "q": "36 × 5 = ?",
+          "q": "36 × 5 = ? 💪 (5 groups workout!)",
           "a": "180",
           "o": ["160", "170", "180", "190"],
         },
         {
-          "q": "144 ÷ 12 = ?",
+          "q": "144 ÷ 12 = ? 🍫 (Sharing chocolates equally)",
           "a": "12",
           "o": ["10", "11", "12", "13"],
         },
         {
-          "q": "25% of 200 = ?",
+          "q": "25% of 200 = ? 🎯 (Quarter of treasure!)",
           "a": "50",
           "o": ["40", "50", "60", "70"],
+        },
+        {
+          "q": "What is 999 + 1? 🚀 (Level up!)",
+          "a": "1000",
+          "o": ["999", "1000", "1001", "1010"],
         },
       ],
 
       "Logic": [
         {
-          "q": "What comes next? 2, 6, 12, 20, ?",
+          "q": "What comes next? 2, 6, 12, 20, ? 🧠",
           "a": "30",
           "o": ["28", "30", "32", "34"],
         },
         {
-          "q": "Odd one out: Cat, Dog, Lion, Car",
+          "q": "Odd one out: Cat, Dog, Lion, Car 🚗",
           "a": "Car",
           "o": ["Car", "Cat", "Dog", "Lion"],
         },
         {
-          "q": "If 3 apples cost 30, 1 apple costs?",
+          "q": "If 3 apples cost 30 🍎, 1 apple costs?",
           "a": "10",
           "o": ["5", "10", "15", "20"],
         },
         {
-          "q": "Which is smallest number?",
+          "q": "Which is smallest number? 🤏",
           "a": "0",
           "o": ["0", "1", "2", "3"],
         },
         {
-          "q": "What is missing? 5, 10, 20, 40, ?",
+          "q": "What is missing? 5, 10, 20, 40, ? 🚀",
           "a": "80",
           "o": ["60", "70", "80", "90"],
+        },
+        {
+          "q": "What comes next? 1, 4, 9, 16, ? 🔍",
+          "a": "25",
+          "o": ["20", "24", "25", "30"],
+        },
+      ],
+
+      "GK": [
+        {
+          "q": "Which planet is known as Red Planet? 🔴",
+          "a": "Mars",
+          "o": ["Earth", "Mars", "Jupiter", "Venus"],
+        },
+        {
+          "q": "Who is called Father of Nation (India)? 🇮🇳",
+          "a": "Mahatma Gandhi",
+          "o": ["Nehru", "Gandhi", "Subhash", "Bhagat Singh"],
+        },
+        {
+          "q": "Which animal is called King of Jungle? 🦁",
+          "a": "Lion",
+          "o": ["Tiger", "Lion", "Elephant", "Bear"],
+        },
+        {
+          "q": "How many days in a week? 📅",
+          "a": "7",
+          "o": ["5", "6", "7", "8"],
+        },
+        {
+          "q": "Which is largest ocean? 🌊",
+          "a": "Pacific",
+          "o": ["Atlantic", "Indian", "Pacific", "Arctic"],
         },
       ],
 
       "Meaning": [
         {
-          "q": "Respect means?",
+          "q": "Respect means? 🙏",
           "a": "Honor",
           "o": ["Honor", "Fight", "Run", "Eat"],
         },
         {
-          "q": "Honesty means?",
+          "q": "Honesty means? 😊",
           "a": "Truthfulness",
           "o": ["Truthfulness", "Anger", "Fear", "Noise"],
         },
         {
-          "q": "Wisdom means?",
+          "q": "Wisdom means? 🧠",
           "a": "Smart thinking",
           "o": ["Smart thinking", "Running", "Eating", "Sleeping"],
+        },
+        {
+          "q": "Brave means? 🦁",
+          "a": "Fearless",
+          "o": ["Fearless", "Lazy", "Angry", "Slow"],
         },
       ],
     },
@@ -1539,16 +2338,44 @@ class _ColorGamePageState extends State<ColorGamePage> {
     'Blue': Colors.blue,
     'Green': Colors.green,
     'Yellow': Colors.yellow,
+    'Purple': Colors.purple,
+    'Orange': Colors.orange,
   };
 
   late String target;
   List<String> options = [];
   String msg = "";
+  int score = 0;
+  int timeLeft = 10;
+  int level = 1;
 
   @override
   void initState() {
     super.initState();
+    startGame();
+  }
+
+  void startGame() {
+    score = 0;
+    level = 1;
     next();
+    startTimer();
+  }
+
+  void startTimer() {
+    timeLeft = 10;
+    Future.doWhile(() async {
+      await Future.delayed(const Duration(seconds: 1));
+      if (timeLeft > 0) {
+        setState(() => timeLeft--);
+        return true;
+      } else {
+        setState(() => msg = "⏰ Time's up!");
+        await Future.delayed(const Duration(seconds: 1));
+        next();
+        return false;
+      }
+    });
   }
 
   void next() {
@@ -1556,35 +2383,85 @@ class _ColorGamePageState extends State<ColorGamePage> {
     target = keys[0];
     options = keys.take(4).toList();
     setState(() => msg = "");
+    startTimer();
   }
 
   void check(String c) {
-    setState(() => msg = c == target ? "🎉 Correct!" : "❌ Wrong");
-    Future.delayed(const Duration(seconds: 1), next);
+    if (c == target) {
+      score++;
+      if (score % 5 == 0) level++; // level up every 5 points
+      setState(() => msg = "🎉 Correct! +1");
+    } else {
+      setState(() => msg = "❌ Oops! Try again");
+    }
+
+    Future.delayed(const Duration(milliseconds: 800), next);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Color Game")),
+      appBar: AppBar(title: const Text("🎨 Color Game"), centerTitle: true),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Find $target", style: const TextStyle(fontSize: 22)),
+          Text(
+            "Score: $score   Level: $level",
+            style: const TextStyle(fontSize: 18),
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            "⏳ Time: $timeLeft",
+            style: const TextStyle(fontSize: 18, color: Colors.red),
+          ),
+
+          const SizedBox(height: 20),
+
+          Text(
+            "Find: $target 🎯",
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 20),
+
           Wrap(
+            alignment: WrapAlignment.center,
             children: options.map((c) {
               return GestureDetector(
                 onTap: () => check(c),
-                child: Container(
-                  width: 80,
-                  height: 80,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  width: 90,
+                  height: 90,
                   margin: const EdgeInsets.all(10),
-                  color: colors[c],
+                  decoration: BoxDecoration(
+                    color: colors[c],
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 5,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }).toList(),
           ),
-          Text(msg),
+
+          const SizedBox(height: 20),
+
+          Text(
+            msg,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 20),
+
+          ElevatedButton(onPressed: startGame, child: const Text("🔄 Restart")),
         ],
       ),
     );
@@ -1602,55 +2479,105 @@ class _CountingGamePageState extends State<CountingGamePage> {
   int target = 0;
   int tapped = 0;
   String message = "";
+  int score = 0;
+  int level = 1;
+  int timeLeft = 10;
+
   Random random = Random();
 
   @override
   void initState() {
     super.initState();
-    newGame();
+    startGame();
   }
 
-  void newGame() {
+  void startGame() {
+    score = 0;
+    level = 1;
+    nextRound();
+  }
+
+  void nextRound() {
     setState(() {
-      target = random.nextInt(100) + 1; // 1 to 5
+      target = random.nextInt(5) + level; // small + level based
       tapped = 0;
       message = "";
+      timeLeft = 10;
+    });
+    startTimer();
+  }
+
+  void startTimer() {
+    Future.doWhile(() async {
+      await Future.delayed(const Duration(seconds: 1));
+      if (timeLeft > 0) {
+        setState(() => timeLeft--);
+        return true;
+      } else {
+        setState(() => message = "⏰ Time's up!");
+        await Future.delayed(const Duration(seconds: 1));
+        nextRound();
+        return false;
+      }
     });
   }
 
   void tapApple() {
     if (tapped < target) {
-      setState(() => tapped++);
+      setState(() {
+        tapped++;
+        message = "🍎 Yum!";
+      });
     }
 
     if (tapped == target) {
-      setState(() => message = "🎉 Great! You counted correctly!");
-      Future.delayed(const Duration(seconds: 1), newGame);
+      score++;
+      if (score % 3 == 0) level++; // level up
+
+      setState(() => message = "🎉 Perfect Count!");
+
+      Future.delayed(const Duration(milliseconds: 800), nextRound);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Counting Game 🎮")),
+      appBar: AppBar(title: const Text("🍎 Counting Game"), centerTitle: true),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Count $target Apples 🍎",
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            "Score: $score   Level: $level",
+            style: const TextStyle(fontSize: 18),
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            "⏳ Time: $timeLeft",
+            style: const TextStyle(fontSize: 18, color: Colors.red),
+          ),
+
+          const SizedBox(height: 20),
+
+          Text(
+            "Tap $target Apples 🎯",
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
 
           const SizedBox(height: 20),
 
           Wrap(
             alignment: WrapAlignment.center,
-            children: List.generate(target, (index) {
+            children: List.generate(target + 2, (index) {
+              // extra apples to confuse 😄
               return GestureDetector(
                 onTap: tapApple,
-                child: Container(
-                  margin: const EdgeInsets.all(10),
-                  child: const Text("🍎", style: TextStyle(fontSize: 50)),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  margin: const EdgeInsets.all(8),
+                  child: const Text("🍎", style: TextStyle(fontSize: 45)),
                 ),
               );
             }),
@@ -1662,7 +2589,14 @@ class _CountingGamePageState extends State<CountingGamePage> {
 
           const SizedBox(height: 10),
 
-          Text(message, style: const TextStyle(fontSize: 20)),
+          Text(
+            message,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 20),
+
+          ElevatedButton(onPressed: startGame, child: const Text("🔄 Restart")),
         ],
       ),
     );
@@ -1679,83 +2613,225 @@ class StoryGamePage extends StatefulWidget {
 class _StoryGamePageState extends State<StoryGamePage> {
   final Random random = Random();
 
-  List<Map<String, dynamic>> allQuestions = [
+  List<Map<String, dynamic>> questions = [
     {
-      "text": "👦 Rahul sees an old man carrying bags.",
-      "options": ["Help him", "Ignore"],
-      "correct": "Help him",
+      "text": "👦 You meet your teacher.",
+      "options": ["Greet politely", "Ignore"],
+      "correct": "Greet politely",
+      "explain": "Greeting shows respect.",
     },
     {
-      "text": "🍫 Rahul has chocolates. Friend asks.",
-      "options": ["Share", "Refuse"],
+      "text": "👴 Old man needs help.",
+      "options": ["Help", "Ignore"],
+      "correct": "Help",
+      "explain": "Helping is kindness.",
+    },
+    {
+      "text": "🧑 New friend meets you.",
+      "options": ["Smile & say hello", "Stay silent"],
+      "correct": "Smile & say hello",
+      "explain": "Smile builds friendship.",
+    },
+    {
+      "text": "🏫 Teacher teaching.",
+      "options": ["Listen", "Disturb"],
+      "correct": "Listen",
+      "explain": "Listening improves learning.",
+    },
+    {
+      "text": "🏠 Parents ask help.",
+      "options": ["Help happily", "Refuse"],
+      "correct": "Help happily",
+      "explain": "Helping builds responsibility.",
+    },
+    {
+      "text": "📱 Someone talking.",
+      "options": ["Listen", "Use phone"],
+      "correct": "Listen",
+      "explain": "Respect others while talking.",
+    },
+    {
+      "text": "😡 Angry with friend.",
+      "options": ["Talk calmly", "Shout"],
+      "correct": "Talk calmly",
+      "explain": "Calmness solves problems.",
+    },
+    {
+      "text": "🎒 School assembly.",
+      "options": ["Stand properly", "Talk"],
+      "correct": "Stand properly",
+      "explain": "Discipline matters.",
+    },
+    {
+      "text": "🚶 Walk on road.",
+      "options": ["Follow rules", "Run anywhere"],
+      "correct": "Follow rules",
+      "explain": "Safety first.",
+    },
+    {
+      "text": "🍫 Have chocolates.",
+      "options": ["Share", "Eat alone"],
       "correct": "Share",
+      "explain": "Sharing is caring.",
     },
+
     {
       "text": "👵 Talking to grandmother.",
       "options": ["Speak politely", "Be rude"],
       "correct": "Speak politely",
+      "explain": "Respect elders.",
     },
     {
-      "text": "🧒 Friend falls while playing.",
+      "text": "📚 Homework time.",
+      "options": ["Complete on time", "Skip"],
+      "correct": "Complete on time",
+      "explain": "Discipline builds success.",
+    },
+    {
+      "text": "🧹 Room is dirty.",
+      "options": ["Clean", "Ignore"],
+      "correct": "Clean",
+      "explain": "Cleanliness is good habit.",
+    },
+    {
+      "text": "🤝 Friend needs help.",
       "options": ["Help", "Laugh"],
       "correct": "Help",
+      "explain": "Helping builds friendship.",
     },
     {
-      "text": "📚 In classroom teacher is teaching.",
-      "options": ["Listen", "Disturb"],
-      "correct": "Listen",
+      "text": "📢 Teacher asks question.",
+      "options": ["Answer politely", "Stay silent"],
+      "correct": "Answer politely",
+      "explain": "Confidence matters.",
+    },
+
+    {
+      "text": "😴 In class feeling sleepy.",
+      "options": ["Stay active", "Sleep"],
+      "correct": "Stay active",
+      "explain": "Focus is important.",
     },
     {
-      "text": "🏠 At home parents ask for help.",
+      "text": "🍎 Lunch time.",
+      "options": ["Share food", "Hide food"],
+      "correct": "Share food",
+      "explain": "Sharing builds love.",
+    },
+    {
+      "text": "🎤 Speaking on stage.",
+      "options": ["Speak confidently", "Be afraid"],
+      "correct": "Speak confidently",
+      "explain": "Confidence grows personality.",
+    },
+    {
+      "text": "🧍 Meeting strangers.",
+      "options": ["Be polite", "Be rude"],
+      "correct": "Be polite",
+      "explain": "Politeness is key.",
+    },
+    {
+      "text": "📖 Reading book.",
+      "options": ["Focus", "Play mobile"],
+      "correct": "Focus",
+      "explain": "Focus improves knowledge.",
+    },
+
+    {
+      "text": "🧒 Younger sibling cries.",
       "options": ["Help", "Ignore"],
       "correct": "Help",
+      "explain": "Care for others.",
+    },
+    {
+      "text": "📦 Found lost item.",
+      "options": ["Return", "Keep"],
+      "correct": "Return",
+      "explain": "Honesty is best.",
+    },
+    {
+      "text": "🧑‍🏫 Teacher scolds.",
+      "options": ["Accept mistake", "Argue"],
+      "correct": "Accept mistake",
+      "explain": "Learn from mistakes.",
+    },
+    {
+      "text": "🧼 Hands dirty.",
+      "options": ["Wash", "Ignore"],
+      "correct": "Wash",
+      "explain": "Hygiene is important.",
+    },
+    {
+      "text": "🚸 Crossing road.",
+      "options": ["Use zebra crossing", "Run"],
+      "correct": "Use zebra crossing",
+      "explain": "Follow safety rules.",
+    },
+
+    {
+      "text": "📅 Time management.",
+      "options": ["Plan work", "Waste time"],
+      "correct": "Plan work",
+      "explain": "Planning helps success.",
+    },
+    {
+      "text": "💬 Talking to elders.",
+      "options": ["Use respectful words", "Use slang"],
+      "correct": "Use respectful words",
+      "explain": "Respect shows personality.",
+    },
+    {
+      "text": "📖 Exam time.",
+      "options": ["Study honestly", "Cheat"],
+      "correct": "Study honestly",
+      "explain": "Honesty is important.",
+    },
+    {
+      "text": "🎯 Goal setting.",
+      "options": ["Work hard", "Give up"],
+      "correct": "Work hard",
+      "explain": "Hard work leads success.",
+    },
+    {
+      "text": "🌟 Daily habit.",
+      "options": ["Be positive", "Complain"],
+      "correct": "Be positive",
+      "explain": "Positive thinking improves life.",
     },
   ];
 
-  List<Map<String, dynamic>> selectedQuestions = [];
-
-  int step = 0;
+  int index = 0;
   int score = 0;
   String message = "";
-
-  @override
-  void initState() {
-    super.initState();
-    loadDailyQuestions();
-  }
-
-  void loadDailyQuestions() {
-    List<Map<String, dynamic>> temp = List.from(allQuestions);
-    temp.shuffle();
-
-    selectedQuestions = temp.take(3).toList(); // ⭐ only 3 questions
-
-    step = 0;
-    score = 0;
-    message = "";
-  }
+  String explanation = "";
 
   void choose(String option) {
-    if (option == selectedQuestions[step]["correct"]) {
+    final q = questions[index];
+
+    if (option == q["correct"]) {
       score++;
-      message = "🎉 Good Choice!";
+      message = "🌟 Awesome!";
     } else {
-      message = "❌ Not correct";
+      message = "😅 Try better!";
     }
 
-    Future.delayed(const Duration(seconds: 1), () {
+    explanation = q["explain"];
+    setState(() {});
+
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
-        step++;
+        index++;
         message = "";
+        explanation = "";
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (step >= selectedQuestions.length) {
+    if (index >= questions.length) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Story Game 📖")),
+        appBar: AppBar(title: const Text("Story Learning 📖")),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1765,14 +2841,24 @@ class _StoryGamePageState extends State<StoryGamePage> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               Text(
-                "Score: $score / ${selectedQuestions.length}",
-                style: const TextStyle(fontSize: 20),
+                "Score: $score / ${questions.length}",
+                style: const TextStyle(fontSize: 18),
               ),
+
               const SizedBox(height: 20),
+
+              const Text(
+                "💡 Be polite, confident and helpful.\nYou are becoming a great personality!",
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 20),
+
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    loadDailyQuestions(); // 🔄 new random set
+                    index = 0;
+                    score = 0;
                   });
                 },
                 child: const Text("Play Again"),
@@ -1783,15 +2869,21 @@ class _StoryGamePageState extends State<StoryGamePage> {
       );
     }
 
-    final q = selectedQuestions[step];
+    final q = questions[index];
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Story Game 📖")),
+      appBar: AppBar(
+        title: Text("Story Learning 📖 (${index + 1}/${questions.length})"),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            LinearProgressIndicator(value: (index + 1) / questions.length),
+
+            const SizedBox(height: 20),
+
             Text(
               q["text"],
               style: const TextStyle(fontSize: 20),
@@ -1813,7 +2905,14 @@ class _StoryGamePageState extends State<StoryGamePage> {
 
             const SizedBox(height: 20),
 
-            Text(message, style: const TextStyle(fontSize: 18)),
+            Text(
+              message,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 10),
+
+            Text(explanation, textAlign: TextAlign.center),
           ],
         ),
       ),
