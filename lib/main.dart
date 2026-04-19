@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+//import 'dart:convert';
+//import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const KidsStudyApp());
@@ -64,8 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Learn'),
           BottomNavigationBarItem(icon: Icon(Icons.quiz), label: 'Quiz'),
           BottomNavigationBarItem(icon: Icon(Icons.games), label: 'Game'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Student'), // 👈 ADD
-
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Student',
+          ), // 👈 ADD
         ],
       ),
     );
@@ -458,6 +462,8 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 }
 
+// ================= CLASS 1 (VERY EASY) =================
+
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
 
@@ -466,148 +472,784 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int currentQuestion = 0;
+  String selectedClass = "Class 1";
+  String selectedTopic = "Fruits";
+
+  int index = 0;
   int score = 0;
-  int stars = 0;
 
-  bool answered = false;
-  String? selectedOption;
+  List<Map<String, dynamic>> questions = [];
+  final Random random = Random();
 
-  List<int> usedQuestions = [];
-  Random random = Random();
+  // ================= QUESTION BANK =================
+  final Map<String, Map<String, List<Map<String, dynamic>>>> data = {
+    // ================= CLASS 1 =================
+    "Class 1": {
+      "ABCD": [
+        {
+          "q": "What comes after A?",
+          "a": "B",
+          "o": ["B", "C", "D", "E"],
+        },
+        {
+          "q": "What comes after C?",
+          "a": "D",
+          "o": ["A", "B", "D", "E"],
+        },
+        {
+          "q": "What comes after E?",
+          "a": "F",
+          "o": ["F", "G", "H", "I"],
+        },
+        {
+          "q": "What comes after H?",
+          "a": "I",
+          "o": ["G", "I", "J", "K"],
+        },
+        {
+          "q": "What comes after M?",
+          "a": "N",
+          "o": ["L", "N", "O", "P"],
+        },
 
-  int timeLeft = 10;
-  Timer? timer;
+        {
+          "q": "What comes before B?",
+          "a": "A",
+          "o": ["A", "C", "D", "E"],
+        },
+        {
+          "q": "What comes before D?",
+          "a": "C",
+          "o": ["A", "B", "C", "E"],
+        },
+        {
+          "q": "What comes before G?",
+          "a": "F",
+          "o": ["E", "F", "G", "H"],
+        },
 
-  final List<Map<String, Object>> questions = [
-    {
-      'question': 'Which is a fruit?',
-      'options': ['Carrot', 'Apple', 'Onion', 'Potato'],
-      'answer': 'Apple',
+        {
+          "q": "Which comes between A and C?",
+          "a": "B",
+          "o": ["B", "D", "E", "F"],
+        },
+        {
+          "q": "Which comes between D and F?",
+          "a": "E",
+          "o": ["E", "G", "H", "I"],
+        },
+
+        {
+          "q": "Arrange: A, B, ?, D",
+          "a": "C",
+          "o": ["C", "E", "F", "G"],
+        },
+        {
+          "q": "Arrange: E, F, ?, H",
+          "a": "G",
+          "o": ["G", "I", "J", "K"],
+        },
+
+        {
+          "q": "Which letter is first?",
+          "a": "A",
+          "o": ["A", "B", "C", "D"],
+        },
+        {
+          "q": "Which letter is last?",
+          "a": "Z",
+          "o": ["Z", "Y", "X", "W"],
+        },
+
+        {
+          "q": "Which comes after K?",
+          "a": "L",
+          "o": ["L", "M", "N", "O"],
+        },
+        {
+          "q": "Which comes after T?",
+          "a": "U",
+          "o": ["U", "V", "W", "X"],
+        },
+
+        {
+          "q": "Which comes before M?",
+          "a": "L",
+          "o": ["L", "N", "O", "P"],
+        },
+        {
+          "q": "Which comes before S?",
+          "a": "R",
+          "o": ["R", "T", "U", "V"],
+        },
+
+        {
+          "q": "Skip letter: A, B, ?, D",
+          "a": "C",
+          "o": ["C", "E", "F", "G"],
+        },
+        {
+          "q": "Skip letter: G, H, ?, J",
+          "a": "I",
+          "o": ["I", "K", "L", "M"],
+        },
+      ],
+      "Colors": [
+        {
+          "q": "Sky color?",
+          "a": "Blue",
+          "o": ["Blue", "Red", "Green", "Black"],
+        },
+        {
+          "q": "Grass color?",
+          "a": "Green",
+          "o": ["Green", "Blue", "Red", "Yellow"],
+        },
+        {
+          "q": "Sun color?",
+          "a": "Yellow",
+          "o": ["Yellow", "Blue", "Black", "Pink"],
+        },
+        {
+          "q": "Apple color?",
+          "a": "Red",
+          "o": ["Red", "Blue", "Green", "Black"],
+        },
+        {
+          "q": "Milk color?",
+          "a": "White",
+          "o": ["White", "Black", "Red", "Green"],
+        },
+
+        {
+          "q": "Banana color?",
+          "a": "Yellow",
+          "o": ["Yellow", "Green", "Red", "Blue"],
+        },
+        {
+          "q": "Coal color?",
+          "a": "Black",
+          "o": ["Black", "White", "Yellow", "Pink"],
+        },
+        {
+          "q": "Leaf color?",
+          "a": "Green",
+          "o": ["Green", "Red", "Blue", "Purple"],
+        },
+        {
+          "q": "Strawberry color?",
+          "a": "Red",
+          "o": ["Red", "Green", "Blue", "Yellow"],
+        },
+        {
+          "q": "Orange fruit color?",
+          "a": "Orange",
+          "o": ["Orange", "Red", "Green", "Blue"],
+        },
+
+        {
+          "q": "Mix Red + White?",
+          "a": "Pink",
+          "o": ["Pink", "Green", "Blue", "Black"],
+        },
+        {
+          "q": "Mix Blue + Yellow?",
+          "a": "Green",
+          "o": ["Green", "Red", "Pink", "White"],
+        },
+        {
+          "q": "Mix Red + Blue?",
+          "a": "Purple",
+          "o": ["Purple", "Green", "Yellow", "Black"],
+        },
+        {
+          "q": "Night sky color?",
+          "a": "Black",
+          "o": ["Black", "Blue", "Green", "Red"],
+        },
+
+        {
+          "q": "Flower rose color?",
+          "a": "Red",
+          "o": ["Red", "Black", "Green", "Blue"],
+        },
+        {
+          "q": "Cloud color?",
+          "a": "White",
+          "o": ["White", "Black", "Red", "Green"],
+        },
+        {
+          "q": "Tomato color?",
+          "a": "Red",
+          "o": ["Red", "Blue", "Yellow", "Black"],
+        },
+        {
+          "q": "Carrot color?",
+          "a": "Orange",
+          "o": ["Orange", "Green", "Blue", "Red"],
+        },
+        {
+          "q": "Egg color?",
+          "a": "White",
+          "o": ["White", "Black", "Red", "Blue"],
+        },
+
+        {
+          "q": "Which is dark color?",
+          "a": "Black",
+          "o": ["Black", "Yellow", "Pink", "White"],
+        },
+      ],
+
+      "Fruits": [
+        {
+          "q": "Which is a fruit?",
+          "a": "Apple",
+          "o": ["Apple", "Car", "Bus", "Pen"],
+        },
+        {
+          "q": "Which is yellow fruit?",
+          "a": "Banana",
+          "o": ["Banana", "Tomato", "Potato", "Chair"],
+        },
+        {
+          "q": "Which is sweet fruit?",
+          "a": "Mango",
+          "o": ["Mango", "Stone", "Book", "Pen"],
+        },
+        {
+          "q": "Which fruit grows on tree?",
+          "a": "Apple",
+          "o": ["Apple", "Car", "Table", "Bus"],
+        },
+
+        {
+          "q": "Which fruit is red?",
+          "a": "Apple",
+          "o": ["Apple", "Banana", "Potato", "Tomato"],
+        },
+        {
+          "q": "Which fruit is green?",
+          "a": "Grapes",
+          "o": ["Grapes", "Mango", "Car", "Pen"],
+        },
+        {
+          "q": "Which fruit is orange?",
+          "a": "Orange",
+          "o": ["Orange", "Apple", "Book", "Chair"],
+        },
+
+        {
+          "q": "Which fruit is soft inside?",
+          "a": "Banana",
+          "o": ["Banana", "Stone", "Iron", "Wood"],
+        },
+        {
+          "q": "Which fruit is juicy?",
+          "a": "Watermelon",
+          "o": ["Watermelon", "Chair", "Bus", "Table"],
+        },
+
+        {
+          "q": "Which is NOT a fruit?",
+          "a": "Carrot",
+          "o": ["Carrot", "Apple", "Mango", "Banana"],
+        },
+        {
+          "q": "Which is NOT eaten as fruit?",
+          "a": "Potato",
+          "o": ["Potato", "Apple", "Grapes", "Orange"],
+        },
+
+        {
+          "q": "Which fruit has seeds inside?",
+          "a": "Apple",
+          "o": ["Apple", "Car", "Bus", "Pen"],
+        },
+        {
+          "q": "Which fruit is small?",
+          "a": "Grapes",
+          "o": ["Grapes", "Watermelon", "Table", "Chair"],
+        },
+
+        {
+          "q": "Which fruit is big?",
+          "a": "Watermelon",
+          "o": ["Watermelon", "Apple", "Banana", "Grapes"],
+        },
+
+        {
+          "q": "Which fruit is sour?",
+          "a": "Lemon",
+          "o": ["Lemon", "Mango", "Apple", "Banana"],
+        },
+        {
+          "q": "Which fruit is used in juice?",
+          "a": "Orange",
+          "o": ["Orange", "Pen", "Book", "Chair"],
+        },
+
+        {
+          "q": "Which fruit is healthy?",
+          "a": "Apple",
+          "o": ["Apple", "Candy", "Chips", "Cake"],
+        },
+        {
+          "q": "Which fruit grows in bunch?",
+          "a": "Grapes",
+          "o": ["Grapes", "Apple", "Mango", "Orange"],
+        },
+
+        {
+          "q": "Which fruit is tropical?",
+          "a": "Mango",
+          "o": ["Mango", "Ice", "Snow", "Stone"],
+        },
+        {
+          "q": "Which fruit is soft and yellow?",
+          "a": "Banana",
+          "o": ["Banana", "Apple", "Bus", "Car"],
+        },
+      ],
+
+      "Meaning": [
+        {
+          "q": "Dog means?",
+          "a": "Animal",
+          "o": ["Animal", "Fruit", "Color", "Thing"],
+        },
+        {
+          "q": "Apple means?",
+          "a": "Fruit",
+          "o": ["Fruit", "Animal", "Color", "Place"],
+        },
+      ],
     },
-    {
-      'question': 'Which is a color?',
-      'options': ['Dog', 'Red', 'Hand', 'Banana'],
-      'answer': 'Red',
-    },
-    {
-      'question': 'Which is a body part?',
-      'options': ['Leg', 'Mango', 'Blue', 'Tomato'],
-      'answer': 'Leg',
-    },
-    {
-      'question': 'Which is a vegetable?',
-      'options': ['Banana', 'Potato', 'Cat', 'Pink'],
-      'answer': 'Potato',
-    },
-  ];
 
-  @override
-  void initState() {
-    super.initState();
-    nextRandomQuestion();
+    // ================= CLASS 2 =================
+    "Class 2": {
+      "Logic": [
+        // 🔢 Number Pattern
+        {
+          "q": "What comes next? 2, 4, 6, ?",
+          "a": "8",
+          "o": ["8", "5", "10", "3"],
+        },
+        {
+          "q": "What comes next? 1, 3, 5, ?",
+          "a": "7",
+          "o": ["7", "6", "8", "9"],
+        },
+        {
+          "q": "What comes next? 10, 20, 30, ?",
+          "a": "40",
+          "o": ["40", "25", "35", "50"],
+        },
+        {
+          "q": "What comes next? 5, 10, 15, ?",
+          "a": "20",
+          "o": ["20", "25", "30", "15"],
+        },
+
+        // 🌟 Missing Pattern
+        {
+          "q": "What is missing? Sun, Moon, Stars, ?",
+          "a": "Sky",
+          "o": ["Sky", "Car", "Book", "Dog"],
+        },
+        {
+          "q": "What is missing? A, B, C, ?",
+          "a": "D",
+          "o": ["D", "E", "F", "G"],
+        },
+        {
+          "q": "What is missing? Monday, Tuesday, ?",
+          "a": "Wednesday",
+          "o": ["Wednesday", "Sunday", "Friday", "April"],
+        },
+        {
+          "q": "What is missing? 100, 200, 300, ?",
+          "a": "400",
+          "o": ["400", "250", "350", "500"],
+        },
+
+        // ❌ Odd One Out
+        {
+          "q": "Odd one out: Apple, Banana, Car, Mango",
+          "a": "Car",
+          "o": ["Car", "Apple", "Banana", "Mango"],
+        },
+        {
+          "q": "Odd one out: Dog, Cat, Lion, Chair",
+          "a": "Chair",
+          "o": ["Chair", "Dog", "Cat", "Lion"],
+        },
+        {
+          "q": "Odd one out: Red, Blue, Green, Ball",
+          "a": "Ball",
+          "o": ["Ball", "Red", "Blue", "Green"],
+        },
+        {
+          "q": "Odd one out: Pen, Book, Table, Pencil",
+          "a": "Table",
+          "o": ["Table", "Pen", "Book", "Pencil"],
+        },
+
+        // ⚡ Comparison (Fast/Big/Small)
+        {
+          "q": "Which is faster?",
+          "a": "Car",
+          "o": ["Car", "Turtle", "Snail", "Stone"],
+        },
+        {
+          "q": "Which is biggest?",
+          "a": "Elephant",
+          "o": ["Elephant", "Cat", "Dog", "Rat"],
+        },
+        {
+          "q": "Which is smallest?",
+          "a": "Ant",
+          "o": ["Ant", "Dog", "Horse", "Cow"],
+        },
+        {
+          "q": "Which is heavy?",
+          "a": "Rock",
+          "o": ["Rock", "Feather", "Paper", "Leaf"],
+        },
+
+        // 🧠 Simple Reasoning
+        {
+          "q": "What is used to open a door?",
+          "a": "Key",
+          "o": ["Key", "Book", "Pen", "Ball"],
+        },
+        {
+          "q": "What do we use to eat rice?",
+          "a": "Spoon",
+          "o": ["Spoon", "Pencil", "Bag", "Shoes"],
+        },
+        {
+          "q": "What helps us see in dark?",
+          "a": "Torch",
+          "o": ["Torch", "Book", "Plate", "Chair"],
+        },
+        {
+          "q": "What do we use to drink water?",
+          "a": "Glass",
+          "o": ["Glass", "Pen", "Bag", "Shoes"],
+        },
+
+        // 🔁 Pattern Thinking
+        {
+          "q": "Pattern: A, C, E, ?",
+          "a": "G",
+          "o": ["G", "B", "D", "F"],
+        },
+        {
+          "q": "Pattern: 2, 4, 8, ?",
+          "a": "16",
+          "o": ["16", "10", "12", "14"],
+        },
+      ],
+    },
+    // ================= CLASS 3 =================
+    "Class 3": {
+      "Math": [
+        // ➕ BASIC + PATTERN
+        {
+          "q": "5 + 3 = ?",
+          "a": "8",
+          "o": ["6", "7", "8", "9"],
+        },
+        {
+          "q": "10 - 4 = ?",
+          "a": "6",
+          "o": ["5", "6", "7", "8"],
+        },
+        {
+          "q": "7 + 6 = ?",
+          "a": "13",
+          "o": ["12", "13", "14", "15"],
+        },
+        {
+          "q": "15 - 7 = ?",
+          "a": "8",
+          "o": ["7", "8", "9", "10"],
+        },
+
+        // 🔢 MULTIPLICATION INTRO
+        {
+          "q": "2 × 3 = ?",
+          "a": "6",
+          "o": ["5", "6", "7", "8"],
+        },
+        {
+          "q": "4 × 2 = ?",
+          "a": "8",
+          "o": ["6", "7", "8", "9"],
+        },
+        {
+          "q": "3 × 3 = ?",
+          "a": "9",
+          "o": ["8", "9", "10", "12"],
+        },
+
+        // 🧠 WORD PROBLEMS
+        {
+          "q": "Ravi has 5 apples and gets 3 more. Total?",
+          "a": "8",
+          "o": ["6", "7", "8", "9"],
+        },
+        {
+          "q": "There are 10 birds, 4 fly away. Left?",
+          "a": "6",
+          "o": ["5", "6", "7", "8"],
+        },
+
+        // 🔁 NUMBER SEQUENCE
+        {
+          "q": "What comes next? 2, 4, 6, ?",
+          "a": "8",
+          "o": ["7", "8", "9", "10"],
+        },
+        {
+          "q": "What comes next? 1, 3, 5, ?",
+          "a": "7",
+          "o": ["6", "7", "8", "9"],
+        },
+        {
+          "q": "What comes next? 10, 20, 30, ?",
+          "a": "40",
+          "o": ["35", "40", "45", "50"],
+        },
+
+        // ❌ REASONING
+        {
+          "q": "Which is bigger?",
+          "a": "15",
+          "o": ["10", "12", "15", "9"],
+        },
+        {
+          "q": "Which is smallest?",
+          "a": "3",
+          "o": ["3", "5", "7", "9"],
+        },
+
+        // 🧠 LOGIC MIX
+        {
+          "q": "If you have 2 hands, how many fingers total?",
+          "a": "10",
+          "o": ["8", "10", "12", "14"],
+        },
+        {
+          "q": "What is 6 + 6?",
+          "a": "12",
+          "o": ["10", "11", "12", "13"],
+        },
+
+        // 🔥 HARD LEVEL
+        {
+          "q": "20 - 9 = ?",
+          "a": "11",
+          "o": ["10", "11", "12", "13"],
+        },
+        {
+          "q": "5 + 5 + 5 = ?",
+          "a": "15",
+          "o": ["10", "15", "20", "25"],
+        },
+      ],
+    },
+    // ========== CLASS 4 =================
+    "Class 4": {
+      "Math": [
+        {
+          "q": "125 + 75 = ?",
+          "a": "200",
+          "o": ["180", "190", "200", "210"],
+        },
+        {
+          "q": "240 - 95 = ?",
+          "a": "145",
+          "o": ["135", "145", "155", "165"],
+        },
+        {
+          "q": "15 × 4 = ?",
+          "a": "60",
+          "o": ["50", "55", "60", "65"],
+        },
+        {
+          "q": "100 ÷ 4 = ?",
+          "a": "25",
+          "o": ["20", "25", "30", "35"],
+        },
+        {
+          "q": "What is half of 90?",
+          "a": "45",
+          "o": ["40", "45", "50", "55"],
+        },
+      ],
+
+      "Logic": [
+        {
+          "q": "What comes next? 3, 6, 9, ?",
+          "a": "12",
+          "o": ["10", "11", "12", "13"],
+        },
+        {
+          "q": "Odd one out: Apple, Mango, Car, Banana",
+          "a": "Car",
+          "o": ["Car", "Apple", "Mango", "Banana"],
+        },
+        {
+          "q": "Which is heavier?",
+          "a": "Rock",
+          "o": ["Feather", "Leaf", "Rock", "Paper"],
+        },
+        {
+          "q": "What is missing? Sun, Moon, Stars, ?",
+          "a": "Sky",
+          "o": ["Sky", "Tree", "Car", "Book"],
+        },
+        {
+          "q": "Which is fastest?",
+          "a": "Aeroplane",
+          "o": ["Bike", "Train", "Car", "Aeroplane"],
+        },
+      ],
+
+      "Meaning": [
+        {
+          "q": "Honest means?",
+          "a": "Truthful",
+          "o": ["Truthful", "Lazy", "Fast", "Weak"],
+        },
+        {
+          "q": "Brave means?",
+          "a": "Fearless",
+          "o": ["Fearless", "Weak", "Slow", "Angry"],
+        },
+        {
+          "q": "Kind means?",
+          "a": "Helpful",
+          "o": ["Helpful", "Rude", "Angry", "Lazy"],
+        },
+      ],
+    },
+
+    // ================= CLASS 5 =================
+    "Class 5": {
+      "Math": [
+        {
+          "q": "345 + 278 = ?",
+          "a": "623",
+          "o": ["613", "623", "633", "643"],
+        },
+        {
+          "q": "900 - 456 = ?",
+          "a": "444",
+          "o": ["434", "444", "454", "464"],
+        },
+        {
+          "q": "36 × 5 = ?",
+          "a": "180",
+          "o": ["160", "170", "180", "190"],
+        },
+        {
+          "q": "144 ÷ 12 = ?",
+          "a": "12",
+          "o": ["10", "11", "12", "13"],
+        },
+        {
+          "q": "25% of 200 = ?",
+          "a": "50",
+          "o": ["40", "50", "60", "70"],
+        },
+      ],
+
+      "Logic": [
+        {
+          "q": "What comes next? 2, 6, 12, 20, ?",
+          "a": "30",
+          "o": ["28", "30", "32", "34"],
+        },
+        {
+          "q": "Odd one out: Cat, Dog, Lion, Car",
+          "a": "Car",
+          "o": ["Car", "Cat", "Dog", "Lion"],
+        },
+        {
+          "q": "If 3 apples cost 30, 1 apple costs?",
+          "a": "10",
+          "o": ["5", "10", "15", "20"],
+        },
+        {
+          "q": "Which is smallest number?",
+          "a": "0",
+          "o": ["0", "1", "2", "3"],
+        },
+        {
+          "q": "What is missing? 5, 10, 20, 40, ?",
+          "a": "80",
+          "o": ["60", "70", "80", "90"],
+        },
+      ],
+
+      "Meaning": [
+        {
+          "q": "Respect means?",
+          "a": "Honor",
+          "o": ["Honor", "Fight", "Run", "Eat"],
+        },
+        {
+          "q": "Honesty means?",
+          "a": "Truthfulness",
+          "o": ["Truthfulness", "Anger", "Fear", "Noise"],
+        },
+        {
+          "q": "Wisdom means?",
+          "a": "Smart thinking",
+          "o": ["Smart thinking", "Running", "Eating", "Sleeping"],
+        },
+      ],
+    },
+  };
+  // ================= LOAD QUESTIONS =================
+  void loadQuestions() {
+    questions = List.from(data[selectedClass]?[selectedTopic] ?? []);
+    questions.shuffle(random);
+
+    index = 0;
+    score = 0;
+
+    setState(() {});
   }
 
-  void startTimer() {
-    timeLeft = 10;
-    timer?.cancel();
-
-    timer = Timer.periodic(const Duration(seconds: 1), (t) {
-      if (timeLeft == 0) {
-        t.cancel();
-        nextRandomQuestion();
-      } else {
-        setState(() => timeLeft--);
-      }
-    });
-  }
-
-  void nextRandomQuestion() {
-    if (usedQuestions.length == questions.length) {
-      showResult();
-      return;
-    }
-
-    int newIndex;
-    do {
-      newIndex = random.nextInt(questions.length);
-    } while (usedQuestions.contains(newIndex));
-
-    usedQuestions.add(newIndex);
-
-    setState(() {
-      currentQuestion = newIndex;
-      answered = false;
-      selectedOption = null;
-    });
-
-    startTimer();
-  }
-
-  void answerQuestion(String selected) {
-    if (answered) return;
-
-    timer?.cancel();
-
-    setState(() {
-      answered = true;
-      selectedOption = selected;
-    });
-
-    bool isCorrect = selected == questions[currentQuestion]['answer'];
-
-    if (isCorrect) {
+  // ================= ANSWER =================
+  void answer(String opt) {
+    if (opt == questions[index]["a"]) {
       score++;
-      stars += 10;
     }
 
-    Future.delayed(const Duration(seconds: 1), () {
-      nextRandomQuestion();
-    });
+    if (index < questions.length - 1) {
+      setState(() => index++);
+    } else {
+      showResult();
+    }
   }
 
-  Color getOptionColor(String option) {
-    if (!answered) return Colors.blue;
-
-    if (option == questions[currentQuestion]['answer']) {
-      return Colors.green;
-    }
-
-    if (option == selectedOption) {
-      return Colors.red;
-    }
-
-    return Colors.grey;
-  }
-
+  // ================= RESULT =================
   void showResult() {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("🎉 Game Over"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Score: $score / ${questions.length}"),
-            const SizedBox(height: 10),
-            Text("Stars: ⭐ $stars"),
-            const SizedBox(height: 10),
-            Text(
-              score >= 3 ? "🏆 Awesome!" : "🙂 Try Again",
-              style: const TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
+        title: const Text("🎉 Quiz Completed"),
+        content: Text("Score: $score / ${questions.length}"),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              setState(() {
-                score = 0;
-                stars = 0;
-                usedQuestions.clear();
-              });
-              nextRandomQuestion();
+              loadQuestions();
             },
             child: const Text("Play Again"),
           ),
@@ -617,53 +1259,95 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    loadQuestions();
+  }
+
+  // ================= UI =================
+  @override
   Widget build(BuildContext context) {
-    final q = questions[currentQuestion];
+    if (questions.isEmpty) {
+      return const Scaffold(body: Center(child: Text("No Questions Found")));
+    }
+
+    final q = questions[index];
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Quiz Game 🎮")),
+      appBar: AppBar(title: const Text("Kids Quiz App 🎮")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Progress bar
-            LinearProgressIndicator(
-              value: timeLeft / 10,
-              backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-              color: Colors.orange,
+            // ================= CLASS =================
+            DropdownButton<String>(
+              value: selectedClass,
+              isExpanded: true,
+              items: const [
+                DropdownMenuItem(value: "Class 1", child: Text("Class 1")),
+                DropdownMenuItem(value: "Class 2", child: Text("Class 2")),
+                DropdownMenuItem(value: "Class 3", child: Text("Class 3")),
+                DropdownMenuItem(value: "Class 4", child: Text("Class 4")),
+                DropdownMenuItem(value: "Class 5", child: Text("Class 5")),
+              ],
+              onChanged: (v) {
+                setState(() {
+                  selectedClass = v!;
+                  selectedTopic = data[v]!.keys.first;
+                  loadQuestions();
+                });
+              },
             ),
-            const SizedBox(height: 10),
-            Text("⏱ Time: $timeLeft sec"),
+
+            // ================= TOPIC =================
+            DropdownButton<String>(
+              value: selectedTopic,
+              isExpanded: true,
+              items: data[selectedClass]!.keys
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
+              onChanged: (v) {
+                setState(() {
+                  selectedTopic = v!;
+                  loadQuestions();
+                });
+              },
+            ),
 
             const SizedBox(height: 20),
 
+            // ================= QUESTION =================
             Text(
-              q['question'] as String,
+              q["q"],
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
 
             const SizedBox(height: 20),
 
-            ...(q['options'] as List<String>).map((option) {
+            // ================= OPTIONS =================
+            ...(q["o"] as List<String>).map((opt) {
               return Container(
                 width: double.infinity,
                 margin: const EdgeInsets.symmetric(vertical: 6),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: getOptionColor(option),
-                  ),
-                  onPressed: () => answerQuestion(option),
-                  child: Text(option),
+                  onPressed: () => answer(opt),
+                  child: Text(opt),
                 ),
               );
-            }).toList(),
+            }),
+
+            const Spacer(),
+
+            Text("Score: $score / ${questions.length}"),
           ],
         ),
       ),
     );
   }
 }
-// ================= MINI GAME =================
+
+//============= MINI GAME ======f===========
 
 class GameMenuPage extends StatelessWidget {
   const GameMenuPage({super.key});
@@ -678,24 +1362,29 @@ class GameMenuPage extends StatelessWidget {
           crossAxisCount: 2,
           children: [
             gameCard(
-  context,
-  "Counting Game",
-  Icons.calculate,
-  const CountingGamePage(),
-),
-gameCard(
-  context,
-  "Story Game",
-  Icons.menu_book,
-  const StoryGamePage(),
-),
-gameCard(context, "Guess Game", Icons.help, const MiniGamePage()),
-            gameCard(context, "Color Game", Icons.color_lens, const ColorGamePage()),
-//gameCard(
-  //context,
-  //"Good Habits",
-  //Icons.star,
-  //const ValuesMatchGamePage(), // ✅ comma added,
+              context,
+              "Counting Game",
+              Icons.calculate,
+              const CountingGamePage(),
+            ),
+            gameCard(
+              context,
+              "Story Game",
+              Icons.menu_book,
+              const StoryGamePage(),
+            ),
+            gameCard(context, "Guess Game", Icons.help, const MiniGamePage()),
+            gameCard(
+              context,
+              "Color Game",
+              Icons.color_lens,
+              const ColorGamePage(),
+            ),
+            //gameCard(
+            //context,
+            //"Good Habits",
+            //Icons.star,
+            //const ValuesMatchGamePage(), // ✅ comma added,
           ],
         ),
       ),
@@ -727,8 +1416,6 @@ gameCard(context, "Guess Game", Icons.help, const MiniGamePage()),
     );
   }
 }
-
-
 
 class MiniGamePage extends StatefulWidget {
   const MiniGamePage({super.key});
@@ -807,17 +1494,14 @@ class _MiniGamePageState extends State<MiniGamePage> {
           Padding(
             padding: const EdgeInsets.all(8),
             child: Center(child: Text("⭐ $score")),
-          )
+          ),
         ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Emoji Hint
-          Text(
-            current['hint']!,
-            style: const TextStyle(fontSize: 70),
-          ),
+          Text(current['hint']!, style: const TextStyle(fontSize: 70)),
 
           const SizedBox(height: 20),
 
@@ -835,10 +1519,7 @@ class _MiniGamePageState extends State<MiniGamePage> {
 
           const SizedBox(height: 20),
 
-          Text(
-            message,
-            style: const TextStyle(fontSize: 20),
-          ),
+          Text(message, style: const TextStyle(fontSize: 20)),
         ],
       ),
     );
@@ -988,7 +1669,6 @@ class _CountingGamePageState extends State<CountingGamePage> {
   }
 }
 
-
 class StoryGamePage extends StatefulWidget {
   const StoryGamePage({super.key});
 
@@ -1003,32 +1683,32 @@ class _StoryGamePageState extends State<StoryGamePage> {
     {
       "text": "👦 Rahul sees an old man carrying bags.",
       "options": ["Help him", "Ignore"],
-      "correct": "Help him"
+      "correct": "Help him",
     },
     {
       "text": "🍫 Rahul has chocolates. Friend asks.",
       "options": ["Share", "Refuse"],
-      "correct": "Share"
+      "correct": "Share",
     },
     {
       "text": "👵 Talking to grandmother.",
       "options": ["Speak politely", "Be rude"],
-      "correct": "Speak politely"
+      "correct": "Speak politely",
     },
     {
       "text": "🧒 Friend falls while playing.",
       "options": ["Help", "Laugh"],
-      "correct": "Help"
+      "correct": "Help",
     },
     {
       "text": "📚 In classroom teacher is teaching.",
       "options": ["Listen", "Disturb"],
-      "correct": "Listen"
+      "correct": "Listen",
     },
     {
       "text": "🏠 At home parents ask for help.",
       "options": ["Help", "Ignore"],
-      "correct": "Help"
+      "correct": "Help",
     },
   ];
 
@@ -1096,7 +1776,7 @@ class _StoryGamePageState extends State<StoryGamePage> {
                   });
                 },
                 child: const Text("Play Again"),
-              )
+              ),
             ],
           ),
         ),
@@ -1140,24 +1820,25 @@ class _StoryGamePageState extends State<StoryGamePage> {
     );
   }
 }
+
 class StudentDetailsPage extends StatelessWidget {
   const StudentDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Student Details")),
+      appBar: AppBar(title: const Text("Details")),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text("Name: Your Name"),
-            Text("University Roll No: XXXXX"),
-            Text("Class Roll No: XXX"),
-            Text("Section: X"),
-            Text("Department/Year: BCA 2nd Year"),
-            Text("University: Your University Name"),
+            Text("Manvi Sharma"),
+            Text("University Roll No: 2342010386"),
+            Text("Class Roll No: 31"),
+            Text("Section: C"),
+            Text("Department/Year: BCA 3rd Year"),
+            Text("University: GLA University Mathura"),
           ],
         ),
       ),
